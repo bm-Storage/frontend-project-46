@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "type": "module",
   "description": "[![Actions Status](https://github.com/bm-Storage/frontend-project-46/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/bm-Storage/frontend-project-46/actions)",
-  "main": "src/index.js",
+  "main": "index.js",
   "bin": {
     "gendiff": "bin/gendiff.js"
   },
@@ -13,6 +13,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "commander": "^12.1.0"
+    "commander": "^12.1.0",
+    "js-yaml": "^4.1.0"
   }
 }
