@@ -25,9 +25,9 @@ jobs:
       - run: make test
       - run: make lint
       - name: Upload coverage to Code Climate
-        uses: paambaati/codeclimate-action@v5.0.0
+        uses: paambaati/codeclimate-action@v9.0.0
         env:
-          CODECLIMATE_KEY: ${{ secrets.CODECLIMATE_KEY }}
+          CC_TEST_REPORTER_ID: ${{ secrets.CODECLIMATE_KEY }}
         with:
            coverageCommand: make test-coverage
            debug: true
