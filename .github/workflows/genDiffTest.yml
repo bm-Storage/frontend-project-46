@@ -1,6 +1,10 @@
 name: Node CI
-on: 
+on:
   - push
+  - pull_request
+
+env:
+  CI: true
 jobs:
   build:
 
@@ -8,7 +12,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [18.x, 20.x, 22.x]
+        node-version: [20.x]
     steps:
       - uses: actions/checkout@v4
         id: checkout
