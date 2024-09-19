@@ -21,8 +21,9 @@ jobs:
       - run: make test
       - run: make lint
       - name: Upload coverage to Code Climate
+        uses: paambaati/codeclimate-action@v5.0.0
         env:
           CODECLIMATE_KEY: ${{ secrets.CODECLIMATE_KEY }}
-        run: |
-          npm install --save-dev @codeclimate/test-reporter
-          CODECLIMATE_REPO_TOKEN=${{ secrets.CODECLIMATE_KEY }} ./node_modules/.bin/codeclimate-test-reporter after-build --exit-code $?
+        with:
+           coverageCommand: make test-coverage
+           debug: true
