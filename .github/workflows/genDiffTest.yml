@@ -24,5 +24,5 @@ jobs:
         env:
           CODECLIMATE_API_KEY: ${{ secrets.CODECLIMATE_KEY }}
         run: |
-          npm install -g codeclimate-test-reporter
-          codeclimate-test-reporter after-build --exit-code $?  
+          npm install --save-dev @codeclimate/test-reporter
+          CODECLIMATE_REPO_TOKEN=${{ secrets.CODECLIMATE_KEY }} ./node_modules/.bin/codeclimate-test-reporter after-build --exit-code $?
