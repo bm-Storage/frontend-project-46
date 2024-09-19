@@ -14,24 +14,24 @@ const stringify = (value, depth) => {
   return `{\n${result.join('\n')}\n  ${indent(depth)}}`;
 };
 
-const buildLines = (data, depth) => data.map((el) => {
-  const makeString = (value, mark) => `${indent(depth)}${mark} ${el.key}: ${stringify(value, depth)}\n`;
+const buildString = (data, depth) => data.map((el) => {
+  const makeLine = (value, mark) => `${indent(depth)}${mark} ${el.key}: ${stringify(value, depth)}\n`;
   switch (el.type) {
     case 'added':
-      return makeString(el.value, '+');
+      return makeLine(el.value, '+');
     case 'deleted':
-      return makeString(el.value, '-');
+      return makeLine(el.value, '-');
     case 'unchanged':
-      return makeString(el.value, ' ');
+      return makeLine(el.value, ' ');
     case 'changed':
-      return `${makeString(el.value1, '-')}${makeString(el.value2, '+')}`;
+      return `${makeLine(el.value1, '-')}${makeLine(el.value2, '+')}`;
     case 'node':
-      return `${indent(depth)}  ${el.key}: {\n${buildLines(el.children, depth + 1).join('')}${indent(depth)}  }\n`;
+      return `${indent(depth)}  ${el.key}: {\n${buildString(el.children, depth + 1).join('')}${indent(depth)}  }\n`;
     default:
       throw new Error(`invalid type ${el.type}`);
   }
 });
 
-const getFormatStylish = (diffData) => `{\n${buildLines(diffData, 1).join('')}}`;
+const getFormatStylish = (diffData) => `{\n${buildString(diffData, 1).join('')}}`;
 
 export default getFormatStylish;

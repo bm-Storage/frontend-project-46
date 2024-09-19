@@ -16,10 +16,7 @@ const buildDiff = (data1, data2) => {
       return { type: 'unchanged', key, value: data1[key] };
     }
     return {
-      type: 'changed',
-      key,
-      value1: data1[key],
-      value2: data2[key],
+      type: 'changed', key, value1: data1[key], value2: data2[key],
     };
   });
 };
