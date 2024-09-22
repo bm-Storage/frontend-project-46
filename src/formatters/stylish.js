@@ -14,7 +14,7 @@ const stringify = (value, depth) => {
   return `{\n${result.join('\n')}\n  ${indent(depth)}}`;
 };
 
-const buildString = (data, depth) => data.map((el) => {
+const buildString = (diffData, depth) => diffData.map((el) => {
   const makeLine = (value, mark) => `${indent(depth)}${mark} ${el.key}: ${stringify(value, depth)}\n`;
   switch (el.type) {
     case 'added':
