@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 import { Command } from 'commander';
-import format from '../index.js';
+import getFormat from '../index.js';
 
 const program = new Command();
 
@@ -11,8 +11,8 @@ program
   .arguments('<filepath1> <filepath2>')
   .option('-f, --format [type]', 'output format (default "stylish")')
   .action((filepath1, filepath2) => {
-    const diff = format(filepath1, filepath2);
-    console.log(diff);
+    const outputFormat = program.opts().format;
+    console.log(getFormat(filepath1, filepath2, outputFormat));
   });
 
 program.parse(process.argv);
