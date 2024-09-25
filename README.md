@@ -40,7 +40,7 @@ or
 gendiff -f stylish filepath1.json filepath2.json
 ```
 
-[![Stylish-demo](https://asciinema.org/a/z2SDMap8IgF92mhrI7r3c7Duz)](https://asciinema.org/a/z2SDMap8IgF92mhrI7r3c7Duz)
+[![Stylish-demo](https://asciinema.org/a/z2SDMap8IgF92mhrI7r3c7Duz.png)](https://asciinema.org/a/z2SDMap8IgF92mhrI7r3c7Duz)
 
 ### Plain format
 
