@@ -49,4 +49,14 @@ gendiff -f stylish filepath1.json filepath2.json
 gendiff -f plain filepath1.json filepath2.json
 ```
 
+[![Stylish-demo](https://asciinema.org/a/35YCkj0PkMfvQWmKquQYZuFzA.png)](https://asciinema.org/a/35YCkj0PkMfvQWmKquQYZuFzA)
+
+### Json format
+
+```bash
+
+gendiff -f json filepath1.json filepath2.json
+```
+
+[![Stylish-demo](https://asciinema.org/a/IbLpoFzGjJm5duYGdmPtiabS0.png)](https://asciinema.org/a/IbLpoFzGjJm5duYGdmPtiabS0)
 
