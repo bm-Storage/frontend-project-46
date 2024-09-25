@@ -10,7 +10,7 @@ const stringify = (value) => {
   return value;
 };
 
-const makeLines = (diffData, currentPath = '') => diffData.reduce((acc, el) => {
+const buildPlaneLines = (diffData, currentPath = '') => diffData.reduce((acc, el) => {
   const path = `${currentPath}${el.key}`;
   if (el.type === 'unchanged') {
     return acc;
@@ -30,10 +30,10 @@ const makeLines = (diffData, currentPath = '') => diffData.reduce((acc, el) => {
     const result = `Property '${path}' was ${el.type} with value: ${value}`;
     return [...acc, result];
   }
-  const result = makeLines(el.children, `${path}.`);
+  const result = buildPlaneLines(el.children, `${path}.`);
   return [...acc, ...result];
 }, []);
 
-const getFormatPlain = (diffData) => makeLines(diffData).join('\n');
+const getFormatPlain = (diffData) => buildPlaneLines(diffData).join('\n');
 
 export default getFormatPlain;

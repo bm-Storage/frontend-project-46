@@ -14,7 +14,7 @@ const stringify = (value, depth) => {
   return `{\n${result.join('\n')}\n  ${indent(depth)}}`;
 };
 
-const buildString = (diffData, depth) => diffData.map((el) => {
+const buildStylishLines = (diffData, depth) => diffData.map((el) => {
   const makeLine = (value, mark) => `${indent(depth)}${mark} ${el.key}: ${stringify(value, depth)}\n`;
   switch (el.type) {
     case 'added':
@@ -26,12 +26,12 @@ const buildString = (diffData, depth) => diffData.map((el) => {
     case 'changed':
       return `${makeLine(el.value1, '-')}${makeLine(el.value2, '+')}`;
     case 'node':
-      return `${indent(depth)}  ${el.key}: {\n${buildString(el.children, depth + 1).join('')}${indent(depth)}  }\n`;
+      return `${indent(depth)}  ${el.key}: {\n${buildStylishLines(el.children, depth + 1).join('')}${indent(depth)}  }\n`;
     default:
       throw new Error(`invalid type ${el.type}`);
   }
 });
 
-const getFormatStylish = (diffData) => `{\n${buildString(diffData, 1).join('')}}`;
+const getFormatStylish = (diffData) => `{\n${buildStylishLines(diffData, 1).join('')}}`;
 
 export default getFormatStylish;
